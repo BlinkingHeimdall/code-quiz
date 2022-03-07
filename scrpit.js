@@ -214,4 +214,37 @@ function nextQuestion() {
         }
     })
 
+    
+
+    buttonOneIndex++;
+    buttonOneIndex %= buttonOneAnswers.length;
+    btn.textContent = buttonOneAnswers[index];
+
+
+    buttonTwoIndex++
+    buttonTwoIndex %= buttonTwoAnswers.length;
+    btn2.textContent = buttonTwoAnswers[index];
+
+    buttonThreeIndex++
+    buttonThreeIndex %= buttonThreeAnswers.length;
+    btn3.textContent = buttonThreeAnswers[index];
+
+    buttonFourIndex++
+    buttonFourIndex %= buttonFourAnswers.length;
+    btn4.textContent = buttonFourAnswers[index];
+
+
+    if (index < quizQuestions.length - 1) {
+        // there are still questions left
+    }
+    else {
+        // last question display score box on next click
+        nextBtn.setAttribute("style", "display: none;");
+        
+
+    }
+    
+}
+
+
     quizStart();
