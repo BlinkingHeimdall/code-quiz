@@ -5,6 +5,9 @@ var controlsEl = document.getElementById("hidden-controls-container");
 var questTextEl = document.getElementById("question-text");
 var btn = document.createElement("button");
 var answerEl = document.getElementById("options");
+var rightResultsEl = document.getElementById("hidden-right");
+var wrongResultsEl = document.getElementById("hidden-wrong");
+var rightEl = document.getElementById("right-answers");
 
 btn.className += "buttons";
 var btn2 = document.createElement("button");
@@ -65,7 +68,65 @@ function quizStart() {
         btn4.textContent = buttonFourAnswers[0];
         answerEl.appendChild(btn4);
 
+        btn.addEventListener("click", function (event) {
+            if (event.target.innerText === correctAnswers[index]) {
+                score++;
+                rightResultsEl.setAttribute("style", "display: block;");
 
+            }
+            else {
+                score--;
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+            }
+        })
+
+        btn2.addEventListener("click", function (event) {
+            if (event.target.innerText === correctAnswers[index]) {
+                score++;
+                rightResultsEl.setAttribute("style", "display: block;");
+
+            }
+            else {
+                score--;
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+
+            }
+        })
+
+        btn3.addEventListener("click", function (event) {
+            if (event.target.innerText === correctAnswers[index]) {
+                score++;
+                rightResultsEl.setAttribute("style", "display: block;");
+            }
+            else {
+                score--;
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+            }
+        })
+
+        btn4.addEventListener("click", function (event) {
+            if (event.target.innerText === correctAnswers[index]) {
+                score++;
+                rightResultsEl.setAttribute("style", "display: block;");
+            }
+            else {
+                score--;
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+            }
+        })
+
+
+
+        countdownTimer();
+
+    })
+
+
+}
 
 
 
