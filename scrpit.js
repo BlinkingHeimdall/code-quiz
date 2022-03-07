@@ -33,8 +33,6 @@ var score = 0;
 var timeInterval 
 
 
-
-
 // array of questions
 var quizQuestions = ["What is == in Js?", "What does ++ mean in Js?", "What does -- mean in Js?", "What does Boolean mean?"];
 
@@ -65,7 +63,6 @@ var buttonFourIndex = 0;
 var correctAnswersIndex = 0;
 
 
-
 // this makes the questions and answers appear when the start button is pressed
 
 
@@ -87,7 +84,6 @@ function quizStart() {
 
         btn4.textContent = buttonFourAnswers[0];
         answerEl.appendChild(btn4);
-
 
 
         btn.addEventListener("click", function (event) {
@@ -142,11 +138,9 @@ function quizStart() {
         })
 
 
-
         countdownTimer();
 
     })
-
 
 }
 
@@ -163,7 +157,6 @@ function nextQuestion() {
 
     rightResultsEl.setAttribute("style", "display: none;");
     wrongResultsEl.setAttribute("style", "display: none;");
-
 
     btn.addEventListener("click", function (event) {
         if (event.target.innerText === correctAnswers[index]) {
@@ -214,7 +207,6 @@ function nextQuestion() {
         }
     })
 
-
     buttonOneIndex++;
     buttonOneIndex %= buttonOneAnswers.length;
     btn.textContent = buttonOneAnswers[index];
@@ -246,7 +238,6 @@ function nextQuestion() {
 }
 
 
-
 // this function finishes the quiz
 
 function endQuiz() {
@@ -266,7 +257,6 @@ function endQuiz() {
 
 }
 
-
 // button to submit when questions are finished 
 
 submitBtn.addEventListener("click", function () {
@@ -277,6 +267,29 @@ submitBtn.addEventListener("click", function () {
     nextBtn.setAttribute("style", "display: none;");
     endQuiz();
     
+})
+
+// pull values from local storage to display when high score button is clicked
+
+highScoreBtn.addEventListener("click", function () {
+    quizQuestionEl.setAttribute("style", "display: none;");
+    quizName.setAttribute("style", "display:none");
+    quizScoreEl.setAttribute("style", "display: none;");
+    wrongResultsEl.setAttribute("style", "display: none;");
+    rightResultsEl.setAttribute("style", "display: none;");
+    controlsEl.setAttribute("style", "display: none;");
+    highScoreEl.setAttribute("style", "display: block;");
+
+    // get tasks from local storage and display them
+    savedScore = JSON.parse(localStorage.getItem("user"));
+    var scoreList = document.getElementById("score-list");
+    scoreList.setAttribute("style", "list-style: none;");
+    var listItemEl = document.createElement("li");
+    listItemEl.setAttribute("style", "align-items: center;");
+    listItemEl.innerText = savedScore.name + " " + savedScore.score;
+    scoreList.appendChild(listItemEl);
+
+
 })
 
     quizStart();
