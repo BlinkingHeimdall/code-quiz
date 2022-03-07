@@ -1,13 +1,23 @@
 var startBtn = document.getElementById("start");
+var timeEl = document.getElementById("time-remaining");
+var nextBtn = document.getElementById("next-button");
+var spanRight = document.getElementById("right");
+var spanWrong = document.getElementById("wrong");
 var quizName = document.getElementById("quiz-name-div");
 var quizQuestionEl = document.getElementById("hidden-container");
-var controlsEl = document.getElementById("hidden-controls-container");
 var questTextEl = document.getElementById("question-text");
-var btn = document.createElement("button");
+var quizScoreEl = document.getElementById("hidden-score-container");
+var submitBtn = document.getElementById("submit-button");
+var controlsEl = document.getElementById("hidden-controls-container");
 var answerEl = document.getElementById("options");
+var answerBtn = document.querySelectorAll(".answers");
+var rightEl = document.getElementById("right-answers");
+var btn = document.createElement("button");
 var rightResultsEl = document.getElementById("hidden-right");
 var wrongResultsEl = document.getElementById("hidden-wrong");
-var rightEl = document.getElementById("right-answers");
+var highScoreBtn = document.getElementById("high-score-button");
+var highScoreEl = document.getElementById("hidden-high-score");
+var playAgainBtn = document.getElementById("play-again");
 
 btn.className += "buttons";
 var btn2 = document.createElement("button");
@@ -16,6 +26,14 @@ let btn3 = document.createElement("button");
 btn3.className += "buttons";
 let btn4 = document.createElement("button");
 btn4.className += "buttons";
+
+var initialsInput = document.getElementById("initials");
+
+var score = 0;
+var timeInterval 
+
+
+
 
 // array of questions
 var quizQuestions = ["What is == in Js?", "What does ++ mean in Js?", "What does -- mean in Js?", "What does Boolean mean?"];
@@ -46,6 +64,8 @@ var buttonThreeIndex = 0;
 var buttonFourIndex = 0;
 var correctAnswersIndex = 0;
 
+
+
 // this makes the questions and answers appear when the start button is pressed
 
 
@@ -67,6 +87,8 @@ function quizStart() {
 
         btn4.textContent = buttonFourAnswers[0];
         answerEl.appendChild(btn4);
+
+
 
         btn.addEventListener("click", function (event) {
             if (event.target.innerText === correctAnswers[index]) {
@@ -128,9 +150,68 @@ function quizStart() {
 
 }
 
+nextBtn.addEventListener("click", nextQuestion);
+
+// questions and answers are flipped through 
+function nextQuestion() {
+    index++;
+    index %= quizQuestions.length;
+    questTextEl.innerText = quizQuestions[index];
+
+    correctAnswersIndex++;
+    correctAnswersIndex %= correctAnswers.length;
+
+    rightResultsEl.setAttribute("style", "display: none;");
+    wrongResultsEl.setAttribute("style", "display: none;");
 
 
+    btn.addEventListener("click", function (event) {
+        if (event.target.innerText === correctAnswers[index]) {
+            score +
+                rightResultsEl.setAttribute("style", "display: block;");
+        }
+        else {
+            score -
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+        }
+    })
 
-        
+    btn2.addEventListener("click", function (event) {
+        if (event.target.innerText === correctAnswers[index]) {
+            score +
+                rightResultsEl.setAttribute("style", "display: block;");
+        }
+        else {
+            score -
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+        }
+    })
 
-        quizStart();
+    btn3.addEventListener("click", function (event) {
+        if (event.target.innerText === correctAnswers[index]) {
+            score +
+                rightResultsEl.setAttribute("style", "display: block;");
+        }
+        else {
+            score -
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+        }
+    })
+
+    btn4.addEventListener("click", function (event) {
+        if (event.target.innerText === correctAnswers[index]) {
+            score +
+                rightResultsEl.setAttribute("style", "display: block;");
+        }
+        else {
+            score -
+                wrongResultsEl.setAttribute("style", "display: block;");
+                timeLeft = timeLeft - 3;
+
+        }
+    })
+
+    quizStart();
