@@ -214,7 +214,6 @@ function nextQuestion() {
         }
     })
 
-    
 
     buttonOneIndex++;
     buttonOneIndex %= buttonOneAnswers.length;
@@ -245,6 +244,9 @@ function nextQuestion() {
     }
     
 }
+
+
+
 // this function finishes the quiz
 
 function endQuiz() {
@@ -263,5 +265,18 @@ function endQuiz() {
     clearInterval(timeInterval);
 
 }
+
+
+// button to submit when questions are finished 
+
+submitBtn.addEventListener("click", function () {
+    quizQuestionEl.setAttribute("style", "display: none;");
+    quizScoreEl.setAttribute("style", "display: block");
+    wrongResultsEl.setAttribute("style", "display: none;");
+    rightResultsEl.setAttribute("style", "display: none;");
+    nextBtn.setAttribute("style", "display: none;");
+    endQuiz();
+    
+})
 
     quizStart();
