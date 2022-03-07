@@ -245,6 +245,23 @@ function nextQuestion() {
     }
     
 }
+// this function finishes the quiz
 
+function endQuiz() {
+    // local storage is used to store the score
+    submitBtn.setAttribute("style", "display: none;");
+    quizQuestionEl.setAttribute("style", "display: none;");
+    wrongResultsEl.setAttribute("style", "display: none;");
+    rightResultsEl.setAttribute("style", "display: none;");
+    nextBtn.setAttribute("style", "display:none;");
+    quizScoreEl.setAttribute("style", "display: block;");
+    quizName.setAttribute("style", "display:none;");
+
+    var scoreDisplay = score;
+    var scoreEl = document.getElementById("score");
+    scoreEl.innerText = "All Done! Your score is " + scoreDisplay;
+    clearInterval(timeInterval);
+
+}
 
     quizStart();
